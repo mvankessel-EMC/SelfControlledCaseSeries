@@ -469,8 +469,11 @@ void SccsConverter::processPerson(PersonData& personData) {
   clipEras(outputEras, personData.startDay, personData.endDay);
   outputEras = mergeOverlapping(outputEras);
   if (includeAge || includeSeason || includeCalendarTime) {
+    std::cout << "Check if covarites\n";
     if (outputEras.size() == 0)  // No exposures: still use to fit age and/or season splines?
+      std::cout << "Check size\n";
       if (hasTimeCovariateCases && timeCovariateCases.find(personData.caseId) == timeCovariateCases.end())
+        std::cout << "Has time for covariate\n";
         return;
     addMonthEras(outputEras, personData);
   }
